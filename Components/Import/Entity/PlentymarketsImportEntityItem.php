@@ -301,22 +301,22 @@ class PlentymarketsImportEntityItem
 				{
 
 					// If this number does not belong to this item
-					if (!PlentymarketsImportItemHelper::isNumberExistantVariant($number, $details['id']))
+					if (!PlentymarketsImportItemHelper::isNumberExistantVariant($sku, $details['id']))
 					{
 						// and check if the number is valid
-						if (!PlentymarketsImportItemHelper::isNumberValid($number))
+						if (!PlentymarketsImportItemHelper::isNumberValid($sku))
 						{
-							throw new PlentymarketsImportItemNumberException('The item variation number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3110);
+							throw new PlentymarketsImportItemNumberException('The item variation number »' . $sku . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3110);
 						}
 
 						// check if the number is available anyway
-						if (PlentymarketsImportItemHelper::isNumberExistant($number))
+						if (PlentymarketsImportItemHelper::isNumberExistant($sku))
 						{
-							throw new PlentymarketsImportItemNumberException('The item variation number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3111);
+							throw new PlentymarketsImportItemNumberException('The item variation number »' . $sku . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3111);
 						}
 
 						// Use this number
-						$details['number'] = $number;
+						$details['number'] = $sku;
 					}
 				}
 			}
@@ -326,18 +326,18 @@ class PlentymarketsImportEntityItem
 				if (PlentymarketsConfig::getInstance()->getItemNumberImportActionID(IMPORT_ITEM_NUMBER) == IMPORT_ITEM_NUMBER)
 				{
 					// Nummer ist ungültig oder in Benutzung
-					if (!PlentymarketsImportItemHelper::isNumberValid($number))
+					if (!PlentymarketsImportItemHelper::isNumberValid($sku))
 					{
-						throw new PlentymarketsImportItemNumberException('The item variation number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3110);
+						throw new PlentymarketsImportItemNumberException('The item variation number »' . $sku . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3110);
 					}
 
-					if (PlentymarketsImportItemHelper::isNumberExistant($number))
+					if (PlentymarketsImportItemHelper::isNumberExistant($sku))
 					{
-						throw new PlentymarketsImportItemNumberException('The item variation number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3111);
+						throw new PlentymarketsImportItemNumberException('The item variation number »' . $sku . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3111);
 					}
 
 					// Use this number
-					$details['number'] = $number;
+					$details['number'] = $sku;
 				}
 
 				else
@@ -681,22 +681,22 @@ class PlentymarketsImportEntityItem
 				$number = trim($this->ItemBase->ItemNo);
 
 				// If this number does not belong to this item
-				if (!PlentymarketsImportItemHelper::isNumberExistantItem($number, $SHOPWARE_itemID))
+				if (!PlentymarketsImportItemHelper::isNumberExistantItem($this->ItemBase->ItemID, $SHOPWARE_itemID))
 				{
 					// and check if the number is valid
-					if (!PlentymarketsImportItemHelper::isNumberValid($number))
+					if (!PlentymarketsImportItemHelper::isNumberValid($this->ItemBase->ItemID))
 					{
-						throw new PlentymarketsImportItemNumberException('The item number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3120);
+						throw new PlentymarketsImportItemNumberException('The item number »' . $this->ItemBase->ItemID . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3120);
 					}
 
 					// check if the number is available anyway
-					if (PlentymarketsImportItemHelper::isNumberExistant($number))
+					if (PlentymarketsImportItemHelper::isNumberExistant($this->ItemBase->ItemID))
 					{
-						throw new PlentymarketsImportItemNumberException('The item number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3121);
+						throw new PlentymarketsImportItemNumberException('The item number »' . $this->ItemBase->ItemID . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3121);
 					}
 
 					// then update it
-					$data['mainDetail']['number'] = $number;
+					$data['mainDetail']['number'] = $this->ItemBase->ItemID;
 				}
 			}
 
@@ -848,18 +848,18 @@ class PlentymarketsImportEntityItem
 					$number = trim($this->ItemBase->ItemNo);
 
 					// Nummer ist ungültig oder in Benutzung
-					if (!PlentymarketsImportItemHelper::isNumberValid($number))
+					if (!PlentymarketsImportItemHelper::isNumberValid($this->ItemBase->ItemID))
 					{
-						throw new PlentymarketsImportItemNumberException('The item number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3120);
+						throw new PlentymarketsImportItemNumberException('The item number »' . $this->ItemBase->ItemID . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is invalid', 3120);
 					}
 
-					if (PlentymarketsImportItemHelper::isNumberExistant($number))
+					if (PlentymarketsImportItemHelper::isNumberExistant($this->ItemBase->ItemID))
 					{
-						throw new PlentymarketsImportItemNumberException('The item number »' . $number . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3121);
+						throw new PlentymarketsImportItemNumberException('The item number »' . $this->ItemBase->ItemID . '« of item »' . $this->data['name'] . '« with the id »' . $this->ItemBase->ItemID . '« is already in use', 3121);
 					}
 
 					// Use this number
-					$data['mainDetail']['number'] = $number;
+					$data['mainDetail']['number'] = $this->ItemBase->ItemID;
 				}
 
 				else
