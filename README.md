@@ -1,11 +1,10 @@
-![plentymarkets Logo](http://www.plentymarkets.eu/layout/pm/images/logo/plentymarkets-logo.jpg)
-# plentymarkets shopware connector
 
-- **License**: AGPL v3
-- **Github Repository**: <https://github.com/plentymarkets/plentymarkets-shopware-connector>
+# plentymarkets shopware connector / hilzweb fork
 
-## Installation und Einrichtung
+- **Original Plentymarkets Github Repository**: <https://github.com/plentymarkets/plentymarkets-shopware-connector>
 
-Über den folgenden Link finden Sie eine ausführlich Anleitung zur Installation und Einrichtung des shopware-Plugins. Sie werden die Einrichtung nicht *ohne* diese Anleitung fehlerfrei abschließen können. Wenn Ihnen Fachwissen zur Einrichtung fehlt, dann lassen Sie sich durch Ihre Agentur oder einen Systemadministrator helfen.
+Dieser Fork dient dazu, spezielle Arbeitsweisen anzupassen, die für bestimmte Anwendungsbereiche nicht passend sind.
 
-[shopware Connector • plentymarkets eCommerce Handbuch](http://man.plentymarkets.eu/tools/shopware-connector/)
+# Changelog
+
+- Statt Artikel-Nummern aus Plenty, die nicht zwingend eindeutig sind, werden bei Hauptartikeln als Shopware-Artikelnummer die PlentyMarkets-Artikel-ID bzw. für Varianten die SKU benutzt.
